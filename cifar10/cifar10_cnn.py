@@ -134,9 +134,10 @@ def main():
     # training
     trainer.run(x_train, y_train, batch_size=128, epochs=12, validation_split=0.2)
     # evaluate
-    score = model.evalate(x_test, y_test, verbose=0)
+    score = model.evaluate(x_test, y_test, verbose=0)
     print('loss', score[0])  # loss
     print('accuracy', score[1])  # acc
+
 
 if __name__ == '__main__':
     main()

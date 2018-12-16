@@ -109,7 +109,7 @@ class Trainer():
             featurewise_std_normalization=False,
             samplewise_std_normalization=False,
             zca_whitening=False,
-            rotation_range=0,
+            rotation_range=90,
             width_shift_range=0.1,
             height_shift_range=0.1,
             horizontal_flip=True,
@@ -131,7 +131,7 @@ class Trainer():
                 )
             ],
             verbose=self.verbose,
-            workers=4,
+            workers=16,
         )
 
 
@@ -159,9 +159,10 @@ def main():
     # training
     trainer.run(x_train, y_train, batch_size=128, epochs=15, validation_split=0.2)
     # evaluate
-    score = model.evalate(x_test, y_test, verbose=0)
+    score = model.evaluate(x_test, y_test, verbose=0)
     print('loss', score[0])  # loss
     print('accuracy', score[1])  # acc
+
 
 if __name__ == '__main__':
     main()
