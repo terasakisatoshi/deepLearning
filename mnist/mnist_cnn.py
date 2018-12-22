@@ -7,7 +7,7 @@ import random
 
 import tensorflow
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers.convolutional import Conv2D, MaxPooling2D
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.layers import Activation, Dense, Flatten
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.optimizers import Adam
@@ -93,6 +93,7 @@ class Trainer():
             callbacks=[TensorBoard(log_dir=self.log_dir)],
             verbose=self.verbose,
         )
+        model.save('mnist_cnn.h5')
 
 
 def main():
@@ -106,6 +107,7 @@ def main():
         input_shape=(dataset.image_shape),
         num_classes=10
     )
+
     model.summary()
 
     trainer = Trainer(
